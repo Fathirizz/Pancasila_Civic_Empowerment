@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pancasila dan Civic Empowerment</title>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<style>
+/* ===== GANTI GAMBAR DI SINI =====
+   --logo       : logo di tengah mindmap
+   --bg-garuda  : gambar latar belakang (garuda)
+   Taruh file gambarnya satu folder dengan file HTML ini, lalu ganti nama file-nya. */
+:root{--logo:url("logo.png");--bg-garuda:url("garuda-bg.png")}
+/* ================================= */
+*{box-sizing:border-box;margin:0}
+html,body{height:100%;overflow:hidden}
+body{background:#3b0610;color:#fff;font-family:"Nunito",system-ui,sans-serif;
+  background:radial-gradient(ellipse at 50% 45%,#a4152b 0%,#6e0c1e 45%,#2f040c 100%)}
+body::before{content:"";position:fixed;inset:0;opacity:.07;
+  background:radial-gradient(circle,#f2c14e 1.5px,transparent 2px) 0 0/34px 34px,
+  radial-gradient(circle,#f2c14e 1.5px,transparent 2px) 17px 17px/34px 34px}
+.wm{position:fixed;left:50%;top:50%;width:min(98vw,92vh);height:min(98vw,92vh);translate:-50% -50%;opacity:.16;background:var(--bg-garuda) center/contain no-repeat;
+  animation:breathe 9s ease-in-out infinite}
+@keyframes breathe{50%{scale:1.05}}
+.bg-sym{position:fixed;font-size:min(9vw,9vh);opacity:.08;animation:float 12s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-18px)}}
+#stage{position:absolute;left:50%;top:50%;transform-origin:center}
+#lines{position:absolute;inset:0;width:100%;height:100%}
+#lines path{fill:none;stroke:#f2c14e;stroke-width:3;stroke-linecap:round;stroke-dasharray:4 12;opacity:.55;
+  animation:fade 1.2s .7s backwards,flow 2.5s linear infinite;transition:stroke-width .3s,opacity .3s}
+#lines path.hl{stroke:#fff;stroke-width:6;opacity:1}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@keyframes fade{from{opacity:0}}
+.ctr{position:absolute;translate:-50% -50%;text-align:center;animation:zoom 1s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes zoom{from{opacity:0;scale:.6}}
+.logo{width:150px;height:176px;margin:0 auto;background:var(--logo) center/contain no-repeat;filter:drop-shadow(0 8px 20px #000a)}
+.ctr h1{font:400 40px/1.1 "Marcellus",serif;color:#f2c14e;margin:10px 0 8px;text-shadow:0 2px 12px #0008}
+.ctr p{font-size:18px;line-height:1.4;opacity:.92}
+.p .logo{width:230px;height:270px}.p .ctr h1{font-size:62px}.p .ctr p{font-size:29px}
+.chip{position:absolute;display:flex;align-items:center;gap:14px;padding:0 18px;border:3px solid #f2c14e;border-radius:20px;
+  background:#fff8ec;color:#3a1a1a;font:400 21px/1.2 "Marcellus",serif;text-align:left;cursor:pointer;
+  box-shadow:0 8px 24px #0006;transition:transform .3s,box-shadow .3s,background .3s;animation:pop .8s cubic-bezier(.2,.8,.2,1) backwards}
+@keyframes pop{from{opacity:0;transform:translateY(26px) scale(.85)}}
+.chip:hover,.chip:focus-visible{transform:translateY(-6px) scale(1.05);background:#fff;box-shadow:0 0 0 5px #f2c14e55,0 14px 30px #000a;outline:none}
+.chip b{flex:none;width:44px;height:44px;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 22px "Nunito",sans-serif}
+.p .chip{font-size:34px;gap:18px;border-width:4px}.p .chip b{width:66px;height:66px;font-size:32px}
+#hint{position:fixed;bottom:8px;left:0;right:0;text-align:center;font-size:12px;opacity:.6;pointer-events:none}
+#ov{position:fixed;inset:0;display:grid;place-items:center;padding:3vmin;background:#1d0208cc;backdrop-filter:blur(7px);
+  opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
+#ov.open{opacity:1;visibility:visible}
+#pn{width:min(94vw,780px);max-height:92vh;display:flex;flex-direction:column;background:#fff8ec;color:#3a1a1a;border:4px solid #f2c14e;
+  border-radius:24px;overflow:hidden;transform:scale(.9) translateY(24px);transition:transform .45s cubic-bezier(.2,.8,.2,1);box-shadow:0 30px 80px #000c}
+#ov.open #pn{transform:none}
+#ph{display:flex;align-items:center;gap:14px;padding:14px 20px;color:#fff;font:400 clamp(20px,3.4vh,30px)/1.15 "Marcellus",serif;transition:background .4s}
+#ph b{flex:none;width:42px;height:42px;border-radius:50%;background:#fff;display:grid;place-items:center;font:800 20px "Nunito"}
+#x{margin-left:auto;background:none;border:0;color:#fff;font-size:34px;cursor:pointer;line-height:1}
+#pb{padding:clamp(12px,2.4vh,22px) 24px;overflow:auto;font-size:clamp(14px,2.3vh,19px);line-height:1.5;transition:opacity .22s,transform .22s}
+#pb.sw{opacity:0;transform:translateX(18px)}
+#pb ul{padding-left:22px}#pb li{margin:5px 0}
+.q{margin-top:12px;padding:10px 14px;border-radius:14px;font-style:italic;font-weight:600;text-align:center;background:var(--c);color:#fff}
+.sl,.nl{list-style:none;padding:0!important}
+.sl li{display:flex;gap:12px;align-items:center}
+.sl i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font:700 15px "Nunito";font-style:normal}
+.nl li{padding-left:16px;border-left:6px solid var(--k);margin:8px 0}
+.nl small{display:block;font-size:.9em;opacity:.85}
+.im{display:grid;grid-template-columns:1fr 1fr;gap:12px;text-align:center}
+.im div{padding:10px;border-radius:14px;background:#fff;border:2px solid var(--c)}.im span{display:block;font-size:2.2em}
+#pf{display:flex;justify-content:space-between;padding:10px 20px;background:#f6e6c8}
+#pf button{background:#7a0c1c;color:#fff;border:0;border-radius:999px;padding:8px 18px;font:700 15px "Nunito";cursor:pointer;transition:transform .2s}
+#pf button:hover{transform:scale(1.07)}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="wm" aria-hidden="true"></div>
+<span class="bg-sym" style="left:4vw;top:6vh">⭐</span><span class="bg-sym" style="right:5vw;top:10vh;animation-delay:-3s">⛓️</span>
+<span class="bg-sym" style="left:6vw;bottom:8vh;animation-delay:-6s">🌳</span><span class="bg-sym" style="right:6vw;bottom:7vh;animation-delay:-9s">🌾</span>
+
+<main id="stage">
+  <svg id="lines" aria-hidden="true"></svg>
+  <div class="ctr" id="ctr"><div class="logo" role="img" aria-label="Lambang perisai Pancasila"></div>
+    <h1>Pancasila dan Civic Empowerment</h1>
+    <p>Pancasila sebagai pedoman untuk membangun warga negara yang aktif, peduli, dan bertanggung jawab.</p></div>
+</main>
+<div id="hint">Klik kotak untuk membuka isinya &nbsp;|&nbsp; tombol ← → untuk pindah &nbsp;|&nbsp; Esc untuk menutup</div>
+
+<div id="ov"><div id="pn" role="dialog" aria-modal="true">
+  <div id="ph"></div><div id="pb"></div>
+  <div id="pf"><button id="pv">← Sebelumnya</button><button id="nx">Berikutnya →</button></div></div></div>
+
+<script>
+const sl=(a)=>`<ul class="sl">${a.map((t,i)=>`<li><i style="background:${['#d62839','#e0a82e','#2e9d56','#3a9bf0','#8b5fd6'][i]}">${i+1}</i>${t}</li>`).join('')}</ul>`;
+const D=[
+{t:'Pengertian Pancasila',c:'#e5566d',h:`<p>Pancasila adalah dasar negara, ideologi, dan pedoman hidup bangsa Indonesia yang terdiri atas lima sila.</p><div class="q">Pancasila bukan sekadar dihafal, tetapi diamalkan.</div>`},
+{t:'Lima Sila Pancasila',c:'#c98f12',h:sl(['Ketuhanan Yang Maha Esa','Kemanusiaan yang Adil dan Beradab','Persatuan Indonesia','Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan dalam Permusyawaratan/Perwakilan','Keadilan Sosial bagi Seluruh Rakyat Indonesia'])},
+{t:'Pengertian Civic Empowerment',c:'#2f86d6',h:`<p><b>Civic Empowerment</b> Civic empowerment (pemberdayaan warga negara) adalah proses meningkatkan kemampuan, pengetahuan, dan rasa percaya diri masyarakat agar dapat berpartisipasi aktif dalam urusan publik dan politik.</p>
+  <p>Civic Empowerment bertujuan mengubah warga negara dari penonton pasif menjadi agen perubahan yang mampu memengaruhi keputusan pemerintah dan memperbaiki kondisi komunitasnya.</p>
+  <p>3 Pilar Utama Civic Empowerment:
+  <ul><li><b>Civic Knowledge</b>: Memahami hak, kewajiban, dan sistem pemerintahan.</li><li><b>Civic Skills</b>: Mampu berorganisasi, berpikir kritis, dan beradvokasi.</li><li><b>Civic Efficacy</b>: Memiliki keyakinan bahwa suara dan tindakan mereka membawa dampak nyata.</li></ul>`},
+{t:'Hubungan Pancasila dan Civic Empowerment',c:'#2e9d56',h:`<p><b>Pancasila</b> menjadi dasar nilai dan pedoman, sedangkan <b>civic empowerment</b> mendorong penerapan nilai tersebut dengan cara memberikan kemampuan dan aksi nyata kepada warga negara untuk menghidupkan Pancasila.</p>
+<p>Tanpa civic empowerment, Pancasila hanya menjadi hafalan. Tanpa Pancasila, civic empowerment kehilangan arah kebangsaannya.</p>`},
+{t:'Nilai Pancasila dalam Civic Empowerment',c:'#8b5fd6',h:`<ul class="nl">${[['#d62839','Ketuhanan','Menghormati agama dan keyakinan.'],['#e0a82e','Kemanusiaan','Peduli sesama dan menolak diskriminasi.'],['#2e9d56','Persatuan','Menjaga kerukunan dan gotong royong.'],['#3a9bf0','Kerakyatan','Bermusyawarah dan menghargai pendapat.'],['#8b5fd6','Keadilan Sosial','Bersikap adil dan membantu yang membutuhkan.']].map(a=>`<li style="--k:${a[0]}"><b>${a[1]}</b><small>${a[2]}</small></li>`).join('')}</ul>`},
+{t:'Contoh Implementasi',c:'#1f8fb5',h:`<div class="im" style="--c:#1f8fb5"><div><span>👥</span>Ikut kegiatan sosial</div><div><span>💬</span>Menyampaikan pendapat dengan santun</div><div><span>📖</span>Memahami hak dan kewajiban</div><div><span>🌱</span>Menjaga lingkungan dan toleransi</div></div>`},
+{t:'Manfaat',c:'#e8643a',h:`<p>Integrasi <b>Pancasila dan Civic Empowerment</b> bermanfaat untuk melahirkan warga negara yang aktif, kritis, namun tetap berkarakter dan beradab. Demokrasi dapat berjalan lebih sehat melalui musyawarah yang inklusif, sekaligus mencegah terjadinya polarisasi sosial yang mengancam persatuan bangsa. Selain itu, masyarakat yang berdaya akan mampu mengawal kebijakan publik secara konstruktif demi mempercepat terwujudnya keadilan sosial, sekaligus membentuk tata kelola pemerintahan yang lebih transparan dan bertanggung jawab.</p>`},
+{t:'Kesimpulan',c:'#2a9d8f',h:`<p><b>Pancasila</b> dan <b>civic empowerment</b> adalah dua hal yang saling melengkapi dalam membentuk masyarakat demokratis yang ideal di Indonesia. Pancasila berfungsi sebagai kompas moral dan fondasi ideologis agar arah pemberdayaan masyarakat tidak keluar dari nilai-nilai ketuhanan, kemanusiaan, persatuan, musyawarah, dan keadilan sosial. Sementara itu, civic empowerment menjadi penggerak nyata yang mengubah nilai-nilai abstrak Pancasila menjadi tindakan konkrit warga negara untuk berpartisipasi aktif, mengawal pemerintahan, dan memperjuangkan keadilan demi kemajuan bangsa.</p><div class="q">Amalkan Pancasila, berdayakan warga, bangun Indonesia.</div>`}
+];
+const $=id=>document.getElementById(id),stage=$('stage'),lines=$('lines'),ctr=$('ctr');
+const chips=D.map((d,i)=>{const b=document.createElement('button');b.className='chip';
+  b.innerHTML=`<b style="background:${d.c}">${i+1}</b><span>${d.t}</span>`;b.style.animationDelay=(.9+i*.12)+'s';
+  b.onclick=()=>show(i);b.onmouseenter=()=>hl(i,1);b.onmouseleave=()=>hl(i,0);b.onfocus=()=>hl(i,1);b.onblur=()=>hl(i,0);
+  stage.appendChild(b);return b});
+function hl(i,on){const p=lines.children[i];p&&p.classList.toggle('hl',!!on)}
+function layout(){
+  const land=innerWidth>=innerHeight,W=land?1600:900,H=land?900:1600,cw=land?330:400,ch=land?96:150;
+  stage.className=land?'':'p';stage.style.width=W+'px';stage.style.height=H+'px';
+  stage.style.transform=`translate(-50%,-50%) scale(${Math.min(innerWidth/W,innerHeight/H)})`;
+  const c=land?[800,450]:[450,400],
+  P=land?[[270,115],[800,115],[1330,115],[230,450],[1370,450],[270,785],[800,785],[1330,785]]
+        :[[240,860],[660,860],[240,1060],[660,1060],[240,1260],[660,1260],[240,1460],[660,1460]];
+  ctr.style.left=c[0]+'px';ctr.style.top=c[1]+'px';ctr.style.width=(land?440:640)+'px';
+  lines.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  lines.innerHTML=P.map(p=>{const q=land?[(c[0]+p[0])/2,c[1]]:[c[0],(c[1]+p[1])/2];
+    return `<path d="M${c[0]},${c[1]} Q${q[0]},${q[1]} ${p[0]},${p[1]}"/>`}).join('');
+  chips.forEach((b,i)=>{Object.assign(b.style,{width:cw+'px',height:ch+'px',left:P[i][0]-cw/2+'px',top:P[i][1]-ch/2+'px'})});
+}
+let cur=0;
+function fill(i){const d=D[i];$('ph').style.background=d.c;$('ph').innerHTML=`<b style="color:${d.c}">${i+1}</b>${d.t}<button id="x" aria-label="Tutup">×</button>`;
+  $('x').onclick=close;$('pb').innerHTML=d.h;$('pn').style.setProperty('--c',d.c)}
+function show(i){const open=$('ov').classList.contains('open');cur=(i+D.length)%D.length;
+  if(!open){fill(cur);$('ov').classList.add('open');return}
+  $('pb').classList.add('sw');setTimeout(()=>{fill(cur);$('pb').classList.remove('sw')},220)}
+function close(){$('ov').classList.remove('open')}
+$('pv').onclick=()=>show(cur-1);$('nx').onclick=()=>show(cur+1);
+$('ov').onclick=e=>{if(e.target===$('ov'))close()};
+addEventListener('keydown',e=>{if(!$('ov').classList.contains('open'))return;
+  if(e.key==='Escape')close();if(e.key==='ArrowRight')show(cur+1);if(e.key==='ArrowLeft')show(cur-1)});
+addEventListener('resize',layout);layout();
+</script>
+</body>
+</html>
